@@ -34,42 +34,42 @@ function task() {
   const task = document.getElementById('task');
   const taskForm = document.createElement('form');
   const taskLabelTitle = document.createElement('label');
-  const taskTitle = document.createAttribute('input');
+  const taskTitle = document.createElement('input');
   const taskLabelDesc = document.createElement('label');
-  const taskDesc = document.createAttribute('input');
+  const taskDesc = document.createElement('input');
   const taskLabelDate = document.createElement('label');
-  const taskDate = document.createAttribute('input');
+  const taskDate = document.createElement('input');
   const taskLabelPriority = document.createElement('label');
-  const taskPriority = document.createAttribute('input');
+  const taskPriority = document.createElement('input');
   const taskLabelCheck = document.createElement('label');
-  const taskCheck = document.createAttribute('checkbox');
+  const taskCheck = document.createElement('checkbox');
   const addTaskButton = document.createElement('button');
 
-  taskLabelTitle.setAttribute('for', 'Title');
-  taskTitle.setAttribute('type', 'text');
-  taskTitle.setAttribute('id', 'titleInput');
-  taskTitle.setAttribute('name', 'title');
+   taskLabelTitle.setAttribute('for', 'Title');
+   taskTitle.setAttribute('type', 'text');
+   taskTitle.setAttribute('id', 'titleInput');
+   taskTitle.setAttribute('name', 'title');
 
-  taskLabelDesc.setAttribute('for', 'Description');
-  taskDesc.setAttribute('type', 'text');
-  taskDesc.setAttribute('id', 'descriptionInput');
-  taskDesc.setAttribute('name', 'description');
+   taskLabelDesc.setAttribute('for', 'Description');
+   taskDesc.setAttribute('type', 'text');
+   taskDesc.setAttribute('id', 'descriptionInput');
+   taskDesc.setAttribute('name', 'description');
 
-  taskLabelDate.setAttribute('for', 'Due date');
-  taskDate.setAttribute('type', 'text');
-  taskDate.setAttribute('id', 'dateInput');
-  taskDate.setAttribute('name', 'date');
+   taskLabelDate.setAttribute('for', 'Due date');
+   taskDate.setAttribute('type', 'text');
+   taskDate.setAttribute('id', 'dateInput');
+   taskDate.setAttribute('name', 'date');
 
-  taskLabelPriority.setAttribute('for', 'Priority');
-  taskPriority.setAttribute('type', 'text');
-  taskPriority.setAttribute('id', 'priorityInput');
-  taskPriority.setAttribute('name', 'priority');
+   taskLabelPriority.setAttribute('for', 'Priority');
+   taskPriority.setAttribute('type', 'text');
+   taskPriority.setAttribute('id', 'priorityInput');
+   taskPriority.setAttribute('name', 'priority');
 
 
-  taskLabelCheck.setAttribute('for', 'Check');
-  taskCheck.setAttribute('type', 'checkbox');
-  taskCheck.setAttribute('id', 'checkInput');
-  taskCheck.setAttribute('name', 'check');
+   taskLabelCheck.setAttribute('for', 'Check');
+   taskCheck.setAttribute('type', 'checkbox');
+   taskCheck.setAttribute('id', 'checkInput');
+   taskCheck.setAttribute('name', 'check');
 
   task.innerHTML = '<h2>Task</h2>';
 
@@ -122,7 +122,7 @@ function showProjects(content){
 
    content.appendChild(projectTitle);
    content.appendChild(taskTitle);
-   project.appendChild(content)
+ 
 
  }
 }
@@ -131,7 +131,7 @@ function loadPage() {
   Storage.storageMyProjects([project1])
   const container = document.getElementById('container');
 
-  showProjects(content)
+  showProjects(container)
 
   container.appendChild(projects());
   container.appendChild(task());
