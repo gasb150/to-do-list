@@ -23,7 +23,9 @@ export default class Project {
       
    const projectdef = new Project('Project title')
   const todo1 = new ToDo("Task title","desc","date","priority","check")
-  projectdef.task = todo1
+  const todo2 = new ToDo("Task title2","desc2","date2","priority2","check2")
+  projectdef.task = [todo1, todo2]
+ 
   return projectdef
   })()
 
