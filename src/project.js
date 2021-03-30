@@ -22,7 +22,9 @@ export default class Project {
 
   }
 
-  export const todo1 = new ToDo("title","desc","date","priority","check")
-
-   
- 
+  export const project1 = new Project('title')
+  project1.task = todo1
+  
+  const todo1 = new ToDo("title","desc","date","priority","check")
+  
+  

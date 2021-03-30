@@ -6,6 +6,5 @@ loadPage();
 
 // // console.log(todo1)
 
-// const project1 = new Project('title')
-// project1.task = todo1
+
 // console.log(project1)
