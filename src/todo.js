@@ -1,4 +1,4 @@
-class ToDo {
+export default class ToDo {
     constructor(title, desc, date, priority, check) {
       this._title = title;
       this._desc= desc;
@@ -29,24 +29,33 @@ class ToDo {
     }
   
     //Setters
-    set title() {
+    set title(title) {
       this._title = title;
     }
   
-    set desc() {
+    set desc(desc) {
       this._desc= desc;
     }
   
-    set date() {
+    set date(date) {
       this._date = date;
     }
   
-    set priority() {
+    set priority(priority) {
       this._priority = priority;
     }
   
-    set check() {
+    set check(check) {
       this._check = check;
     }
   }
+
+
+
+
+
+
+
+
+
   
