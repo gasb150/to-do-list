@@ -6,6 +6,7 @@ function projects() {
   const project = document.getElementById('project');
   const addProjectButton = document.createElement('button');
 
+  project.innerHTML = '<h2>Projects</h2>';
   addProjectButton.innerHTML = 'Add Project';
   const form = document.createElement('form');
   const label = document.createElement('label');
@@ -19,6 +20,7 @@ function projects() {
   addProjectButton.addEventListener('click',() => {
     addProjectToProjects();
   })
+
   form.appendChild(label);
   form.appendChild(input);
   
@@ -69,13 +71,28 @@ function task() {
   taskCheck.setAttribute('id', 'checkInput');
   taskCheck.setAttribute('name', 'check');
 
-  task.innerHTML = 'Task';
+  task.innerHTML = '<h2>Task</h2>';
+
+  task.appendChild(taskForm);
+  taskForm.appendChild(taskLabelTitle);
+  taskForm.appendChild(taskTitle);
+  taskForm.appendChild(taskLabelDesc);
+  taskForm.appendChild(taskDesc);
+  taskForm.appendChild(taskLabelDate);
+  taskForm.appendChild(taskDate);
+  taskForm.appendChild(taskLabelPriority);
+  taskForm.appendChild(taskPriority);
+  taskForm.appendChild(taskLabelCheck);
+  taskForm.appendChild(taskCheck);
+
+  addTaskButton.addEventListener('click',() => {
+    addTask();
+  })
 
   return task;
 }
 
 function addProjectToProjects(){
-
   let myProject = JSON.parse(localStorage.getItem('myProject'));
   console.log(myProject)
   if (myProject === null) {
@@ -86,6 +103,12 @@ function addProjectToProjects(){
   const project = new Project(pTitle)
   myProject.push(project)
  Storage.storageMyProjects(myProject)
+}
+
+function addTask() {
+  let myTask = [];
+  
+  const taskTitle = document.getElementById('ta')
 }
 
 function showProjects(content){
