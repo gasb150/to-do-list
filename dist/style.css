@@ -15,16 +15,10 @@ body {
   object-fit: cover;
 }
 
-header {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  background-color: blue;
-  border-bottom: 1px solid white;
-  padding: 0.5em;
+.container .project {
+  background-color: grey;
 }
 
-nav {
-  background-color: blue;
-  width: 100%;
+.container .task {
+  background-color: lavender;
 }

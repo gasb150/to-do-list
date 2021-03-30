@@ -17,10 +17,8 @@ export default class Project {
     set task(task) {
         this._task = task;
     }
-
   }
 
- 
  export const project1 = (() => {
       
    const projectdef = new Project('Project title')

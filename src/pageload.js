@@ -2,39 +2,6 @@
 import Project, {project1} from './project'
 import Storage from './storage'
 
-function header() {
-  const header = document.createElement('header');
-  header.classList.add('header');
-
-  const name = document.createElement('h1');
-  name.classList.add('name');
-  name.innerHTML = '<b>To Do List</b>';
-
-  header.appendChild(name);
-  header.appendChild(navBar());
-  return header;
-}
-
-function navBar() {
-  const nav = document.createElement('nav');
-  return nav;
-}
-
-function addProjectToProjects(){
-
-  let myProject = JSON.parse(localStorage.getItem('myProject'));
-  console.log(myProject)
-  if (myProject === null) {
-    myProject = []
-  }
-  const pTitle=document.getElementById('ptitle').value;
-  console.log(pTitle)
-  const project = new Project(pTitle)
-  myProject.push(project)
- Storage.storageMyProjects(myProject)
-}
-
-
 function projects() {
   const project = document.getElementById('project');
   const addProjectButton = document.createElement('button');
@@ -57,15 +24,69 @@ function projects() {
   
   project.appendChild(addProjectButton);
   project.appendChild(form);
+
   return project;
 }
 
 function task() {
   const task = document.getElementById('task');
-  
+  const taskForm = document.createElement('form');
+  const taskLabelTitle = document.createElement('label');
+  const taskTitle = document.createAttribute('input');
+  const taskLabelDesc = document.createElement('label');
+  const taskDesc = document.createAttribute('input');
+  const taskLabelDate = document.createElement('label');
+  const taskDate = document.createAttribute('input');
+  const taskLabelPriority = document.createElement('label');
+  const taskPriority = document.createAttribute('input');
+  const taskLabelCheck = document.createElement('label');
+  const taskCheck = document.createAttribute('checkbox');
+  const addTaskButton = document.createElement('button');
+
+  taskLabelTitle.setAttribute('for', 'Title');
+  taskTitle.setAttribute('type', 'text');
+  taskTitle.setAttribute('id', 'titleInput');
+  taskTitle.setAttribute('name', 'title');
+
+  taskLabelDesc.setAttribute('for', 'Description');
+  taskDesc.setAttribute('type', 'text');
+  taskDesc.setAttribute('id', 'descriptionInput');
+  taskDesc.setAttribute('name', 'description');
+
+  taskLabelDate.setAttribute('for', 'Due date');
+  taskDate.setAttribute('type', 'text');
+  taskDate.setAttribute('id', 'dateInput');
+  taskDate.setAttribute('name', 'date');
+
+  taskLabelPriority.setAttribute('for', 'Priority');
+  taskPriority.setAttribute('type', 'text');
+  taskPriority.setAttribute('id', 'priorityInput');
+  taskPriority.setAttribute('name', 'priority');
+
+
+  taskLabelCheck.setAttribute('for', 'Check');
+  taskCheck.setAttribute('type', 'checkbox');
+  taskCheck.setAttribute('id', 'checkInput');
+  taskCheck.setAttribute('name', 'check');
+
+  task.innerHTML = 'Task';
+
   return task;
 }
 
+function addProjectToProjects(){
+
+  let myProject = JSON.parse(localStorage.getItem('myProject'));
+  console.log(myProject)
+  if (myProject === null) {
+    myProject = []
+  }
+  const pTitle=document.getElementById('ptitle').value;
+  console.log(pTitle)
+  const project = new Project(pTitle)
+  myProject.push(project)
+ Storage.storageMyProjects(myProject)
+}
 
 function showProjects(content){
   let myProject = JSON.parse(localStorage.getItem('myProject'));
@@ -78,20 +99,18 @@ function showProjects(content){
 
    content.appendChild(projectTitle);
    content.appendChild(taskTitle);
+   project.appendChild(content)
  }
 }
 
 function loadPage() {
-
   Storage.storageMyProjects([project1])
-  const content = document.getElementById('content');
   const container = document.getElementById('container');
 
   showProjects(content)
 
-  content.appendChild(header());
-  content.appendChild(projects());
-
+  container.appendChild(projects());
+  container.appendChild(task());
 }
 
 export default loadPage;
