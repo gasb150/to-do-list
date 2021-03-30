@@ -67,18 +67,29 @@ function task() {
   return task;
 }
 
+
+function showProjects(content){
+  let myProject = JSON.parse(localStorage.getItem('myProject'));
+  for (let i=0; i<myProject.length; i+=1){
+  
+  let projectTitle  = document.createElement('div')
+  let taskTitle = document.createElement('div')
+  console.log(myProject[0]['_name'])
+  projectTitle.innerHTML = myProject[i]['_name'];
+
+   content.appendChild(projectTitle);
+   content.appendChild(taskTitle);
+ }
+}
+
 function loadPage() {
 
   Storage.storageMyProjects([project1])
   const content = document.getElementById('content');
   const container = document.getElementById('container');
-  const projectTitle  = document.createElement('div')
-  const taskTitle = document.createElement('div')
-  projectTitle.innerHTML = project1.name;
-  taskTitle.innerHTML = project1.task.title;
 
-  content.appendChild(projectTitle);
-  content.appendChild(taskTitle);
+  showProjects(content)
+
   content.appendChild(header());
   content.appendChild(projects());
 
