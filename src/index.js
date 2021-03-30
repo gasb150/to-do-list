@@ -1,4 +1,4 @@
-class todo {
+class ToDo {
   constructor(title, desc, date, priority, check) {
     this._title = title;
     this._desc= desc;
