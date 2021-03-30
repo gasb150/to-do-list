@@ -123,6 +123,7 @@ function showProjects(content){
    content.appendChild(projectTitle);
    content.appendChild(taskTitle);
    project.appendChild(content)
+
  }
 }
 
