@@ -131,7 +131,7 @@ function loadPage() {
   Storage.storageMyProjects([project1])
   const container = document.getElementById('container');
 
-  showProjects(content)
+  showProjects(container)
 
   container.appendChild(projects());
   container.appendChild(task());
