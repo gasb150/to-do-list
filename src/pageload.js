@@ -17,19 +17,27 @@ function navBar() {
   return nav;
 }
 
-function main() {
-  const main = document.createElement('main');
-  main.classList.add('main');
-  main.setAttribute('id', 'main');
-  return main;
+function project() {
+  const project = document.getElementById('project');
+  const addProjectButton = document.createElement('button');
+
+  addProjectButton.innerHTML = 'Add Project';
+  
+  project.appendChild(addProjectButton);
+  return project;
+}
+
+function task() {
+  
+  return task;
 }
 
 function loadPage() {
   const content = document.getElementById('content');
+  const container = document.getElementById('container');
 
   content.appendChild(header());
-  content.appendChild(main());
-  loadHome();
+  content.appendChild(project());
 }
 
 export default loadPage;
