@@ -24,9 +24,8 @@ function navBar() {
 function addProjectToProjects(){
 
   let myProject = JSON.parse(localStorage.getItem('myProject'));
-console.log(myProject)
+  console.log(myProject)
   if (myProject === null) {
-    alert("yess")
     myProject = [] ;
     myProject.push(project1)
   }
@@ -39,29 +38,28 @@ function projects() {
   const addProjectButton = document.createElement('button');
 
   addProjectButton.innerHTML = 'Add Project';
-const form = document.createElement('form')
-const label = document.createElement('label')
-const input = document.createElement('input')
+  const form = document.createElement('form');
+  const label = document.createElement('label');
+  const input = document.createElement('input');
 
-label.setAttribute('for', 'ptitle')
-input.setAttribute('type', 'text')
-input.setAttribute('id', 'ptitle')
-input.setAttribute('name', 'ptitle')
-
-
-
+  label.setAttribute('for', 'ptitle');
+  input.setAttribute('type', 'text');
+  input.setAttribute('id', 'ptitle');
+  input.setAttribute('name', 'ptitle');
 
   addProjectButton.addEventListener('click',() => {
-    addProjectToProjects()
+    addProjectToProjects();
   })
-  project.appendChild(label)
-  project.appendChild(input)
+  form.appendChild(label);
+  form.appendChild(input);
   
   project.appendChild(addProjectButton);
+  project.appendChild(form);
   return project;
 }
 
 function task() {
+  const task = document.getElementById('task');
   
   return task;
 }
