@@ -1,5 +1,5 @@
 
-import {project1} from './project'
+import Project, {project1} from './project'
 import Storage from './storage'
 
 function header() {
@@ -12,7 +12,6 @@ function header() {
 
   header.appendChild(name);
   header.appendChild(navBar());
-
   return header;
 }
 
@@ -26,9 +25,12 @@ function addProjectToProjects(){
   let myProject = JSON.parse(localStorage.getItem('myProject'));
   console.log(myProject)
   if (myProject === null) {
-    myProject = [] ;
-    myProject.push(project1)
+    myProject = []
   }
+  const pTitle=document.getElementById('ptitle').value;
+  console.log(pTitle)
+  const project = new Project(pTitle)
+  myProject.push(project)
  Storage.storageMyProjects(myProject)
 }
 
@@ -64,11 +66,29 @@ function task() {
   return task;
 }
 
+
+function showProjects(content){
+  let myProject = JSON.parse(localStorage.getItem('myProject'));
+  for (let i=0; i<myProject.length; i+=1){
+  
+  let projectTitle  = document.createElement('div')
+  let taskTitle = document.createElement('div')
+  console.log(myProject[0]['_name'])
+  projectTitle.innerHTML = myProject[i]['_name'];
+
+   content.appendChild(projectTitle);
+   content.appendChild(taskTitle);
+ }
+}
+
 function loadPage() {
 
+  Storage.storageMyProjects([project1])
   const content = document.getElementById('content');
   const container = document.getElementById('container');
- 
+
+  showProjects(content)
+
   content.appendChild(header());
   content.appendChild(projects());
 

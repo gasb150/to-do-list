@@ -21,12 +21,13 @@ export default class Project {
   }
 
  
- export const project1 = (() => {    
-  const projectdef = new Project('title');
-  const todo1 = new ToDo("title","desc","date","priority","check");
-  projectdef.task = todo1;
-  return projectdef;
-  })();
+ export const project1 = (() => {
+      
+   const projectdef = new Project('Project title')
+  const todo1 = new ToDo("Task title","desc","date","priority","check")
+  projectdef.task = todo1
+  return projectdef
+  })()
 
 
   
