@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: url(./img/cover.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: blue;
+  border-bottom: 1px solid white;
+  padding: 0.5em;
+}
+
+nav {
+  background-color: blue;
+  width: 100%;
+}
