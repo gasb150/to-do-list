@@ -1,15 +1,18 @@
 class todo {
-  constructor (title, desc, date, priority, check) {
+  constructor(title, description, date, priority, check) {
     this._title = title;
-    this._desc = desc;
+    this._descriprion = description;
     this._date = date;
     this._priority = priority;
     this._check = check;
   }
-  get title (){
-    return this._title
+
+  get title(){
+    return this._title;
   }
-  set title (){
-    this._title = title
+
+  get description(){
+    return this._tdescription;
   }
+ 
 }
