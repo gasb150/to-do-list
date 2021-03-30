@@ -1,3 +1,4 @@
+import Project, {project1} from './project'
 const Storage = (() => {
 function storageMyTasks(myTask) {
     localStorage.setItem('myTask', JSON.stringify(myTask));
@@ -5,6 +6,7 @@ function storageMyTasks(myTask) {
 
   function storageMyProjects(myProject) {
     localStorage.setItem('myProject', JSON.stringify(myProject));
+    
   }
 
    function removeTask(id) {

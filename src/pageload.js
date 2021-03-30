@@ -1,8 +1,9 @@
 
-import Project, {project1} from './project'
-import Storage from './storage'
 
-function projects() {
+import Storage from './storage'
+import Project, {project1} from './project'
+
+  function projects() {
   const project = document.getElementById('project');
   const addProjectButton = document.createElement('button');
 
@@ -30,8 +31,36 @@ function projects() {
   return project;
 }
 
-function task() {
+function task(eId) {
+  // Test
   const task = document.getElementById('task');
+
+  let myProject = JSON.parse(localStorage.getItem('myProject'));
+
+  for (let i =0; i<myProject[eId]['_task'].length; i+=1){
+  const currentTask = document.createElement('div')
+  const currentTaskTitle = document.createElement('div')
+  const currentTaskDesc = document.createElement('div')
+  const currentTaskDate = document.createElement('div')
+  const currentTaskPriority = document.createElement('div')
+  const currentTaskCheck = document.createElement('div')
+  
+  currentTaskTitle.innerHTML = myProject[eId]['_task'][i]['_title']
+  
+  currentTaskDesc.innerHTML = myProject[eId]['_task'][i]['_desc']
+  currentTaskDate.innerHTML = myProject[eId]['_task'][i]['_date']
+  currentTaskPriority.innerHTML = myProject[eId]['_task'][i]['_priority']
+  currentTaskCheck.innerHTML = myProject[eId]['_task'][i]['_check']
+
+  currentTask.appendChild(currentTaskTitle)
+  currentTask.appendChild(currentTaskDesc)
+  currentTask.appendChild(currentTaskDate)
+  currentTask.appendChild(currentTaskPriority)
+  currentTask.appendChild(currentTaskCheck)
+
+  task.appendChild(currentTask)
+  }
+  
   const taskForm = document.createElement('form');
   const taskLabelTitle = document.createElement('label');
   const taskTitle = document.createElement('input');
@@ -44,6 +73,8 @@ function task() {
   const taskLabelCheck = document.createElement('label');
   const taskCheck = document.createElement('checkbox');
   const addTaskButton = document.createElement('button');
+
+  
 
    taskLabelTitle.setAttribute('for', 'Title');
    taskTitle.setAttribute('type', 'text');
@@ -72,6 +103,9 @@ function task() {
    taskCheck.setAttribute('name', 'check');
 
   task.innerHTML = '<h2>Task</h2>';
+  addTaskButton.innerHTML ="Add task"
+
+ 
 
   task.appendChild(taskForm);
   taskForm.appendChild(taskLabelTitle);
@@ -84,9 +118,9 @@ function task() {
   taskForm.appendChild(taskPriority);
   taskForm.appendChild(taskLabelCheck);
   taskForm.appendChild(taskCheck);
-
+  taskForm.appendChild(addTaskButton);
   addTaskButton.addEventListener('click',() => {
-    addTask();
+    addTask(eId);
   })
 
   return task;
@@ -95,46 +129,64 @@ function task() {
 function addProjectToProjects(){
   let myProject = JSON.parse(localStorage.getItem('myProject'));
   console.log(myProject)
-  if (myProject === null) {
-    myProject = []
-  }
+
+ 
   const pTitle=document.getElementById('ptitle').value;
   console.log(pTitle)
   const project = new Project(pTitle)
   myProject.push(project)
  Storage.storageMyProjects(myProject)
+
 }
 
-function addTask() {
+function addTask(eId) {
   let myTask = [];
-  
-  const taskTitle = document.getElementById('ta')
+  let myProject = JSON.parse(localStorage.getItem('myProject'));
+  myProject[eId][_task]
+  // const taskTitle = document.getElementById('ta')
 }
 
 function showProjects(content){
   let myProject = JSON.parse(localStorage.getItem('myProject'));
-  for (let i=0; i<myProject.length; i+=1){
+
+  if (myProject === null){
+    Storage.storageMyProjects([project1])
+   console.log(myProject.length)
+  } 
   
-  let projectTitle  = document.createElement('div')
+  for (let i=0; i<myProject.length; i+=1){
+  console.log('yess')
+  let projectTitle  = document.createElement('button')
+  projectTitle.setAttribute('id', i)
+ 
   let taskTitle = document.createElement('div')
   console.log(myProject[0]['_name'])
   projectTitle.innerHTML = myProject[i]['_name'];
 
    content.appendChild(projectTitle);
    content.appendChild(taskTitle);
- 
+  }
 
- }
 }
 
 function loadPage() {
-  Storage.storageMyProjects([project1])
-  const container = document.getElementById('container');
+    const projectColumn = document.getElementById('project');
+  projectColumn.addEventListener('click', (e) =>{
+    
+    let eId=e.target.id
 
-  showProjects(container)
+    task(eId)
 
-  container.appendChild(projects());
-  container.appendChild(task());
+ 
+  })
+
+  
+
+  showProjects(projectColumn)
+ 
+  
+  
+  
 }
 
 export default loadPage;
