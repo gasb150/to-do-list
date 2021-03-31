@@ -1,4 +1,5 @@
 import Project, {project1} from './project'
+
 const Storage = (() => {
 function storageMyTasks(myTask) {
     localStorage.setItem('myTask', JSON.stringify(myTask));

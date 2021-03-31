@@ -1,5 +1,6 @@
 import Storage from './storage'
 import Project, { project1 } from './project'
+import ToDo from './todo'
 
 function projects() {
   const project = document.getElementById('project');
@@ -75,6 +76,7 @@ function task (eId) {
 
   task.innerHTML = '<h2>Task</h2>'
   addTaskButton.innerHTML = 'Add task'
+  addTaskButton.setAttribute('type', 'submit')
 
   for (let i = 0; i < myProject[eId]['_task'].length; i += 1) {
     const currentTask = document.createElement('div')
@@ -95,7 +97,7 @@ function task (eId) {
     currentTask.appendChild(currentTaskDate)
     currentTask.appendChild(currentTaskPriority)
     currentTask.appendChild(currentTaskCheck)
-    alert(currentTask)
+    
     task.appendChild(currentTask)
     console.log(task)
   }
@@ -117,8 +119,12 @@ function task (eId) {
   taskForm.appendChild(taskLabelCheck)
   taskForm.appendChild(taskCheck)
   taskForm.appendChild(addTaskButton)
-  addTaskButton.addEventListener('click', () => {
-    addTask(eId)
+
+  addTaskButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+     addTask(eId)
+     alert (e.target)
   })
 
   return task
@@ -136,10 +142,26 @@ function addProjectToProjects () {
 }
 
 function addTask (eId) {
-  let myTask = []
+  
   let myProject = JSON.parse(localStorage.getItem('myProject'))
-  myProject[eId][_task]
+  let tasks = myProject[eId]['_task']
+  const inTaskTitle = document.getElementById('titleInput').value
+  const inTaskDesc = document.getElementById('descriptionInput').value
+  const inTaskDate = document.getElementById('dateInput').value
+  const inTaskPriority = document.getElementById('priorityInput').value
+  const inTaskCheck = document.getElementById('checkInput').value
+
+  task = new ToDo (inTaskTitle, inTaskDesc, inTaskDate, inTaskPriority, inTaskCheck)
+
+  tasks.push(task)
+
+  console.log(tasks)
+  console.log(myProject[eId])
+  console.log(myProject)
+  Storage.storageMyProjects(myProject)
+  
 }
+
 
 function showProjects (content) {
   let myProject = JSON.parse(localStorage.getItem('myProject'))
@@ -166,13 +188,15 @@ function showProjects (content) {
 
 function loadPage () {
   const projectColumn = document.getElementById('project')
-  projectColumn.addEventListener('click', e => {
+  const projectList = document.createElement('div')
+  projectList.addEventListener('click', e => {
     let eId = e.target.id
     console.log(eId)
     task(eId)
   })
   projects()
-  showProjects(projectColumn)
+  showProjects(projectList)
+  projectColumn.appendChild(projectList)
   
 }
 
