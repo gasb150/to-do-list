@@ -23,7 +23,12 @@ h2 {
   text-transform: uppercase;
 }
 
-label {
+.task h2 {
+  text-align: center;
+}
+
+.task form {
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
@@ -31,9 +36,10 @@ label {
 input {
   border-radius: 8px;
   margin: 10px;
-  display: inline-block;
+  display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 65%;
 }
 
 .addButton {
