@@ -1,7 +1,7 @@
 import Storage from './storage'
 import Project, { project1 } from './project'
 
-function projects () {
+function projects() {
   const project = document.getElementById('project')
   const addProjectButton = document.createElement('button')
 
@@ -34,31 +34,6 @@ function task (eId) {
   const task = document.getElementById('task')
 
   let myProject = JSON.parse(localStorage.getItem('myProject'))
-
-  for (let i = 0; i < myProject[eId]['_task'].length; i += 1) {
-    const currentTask = document.createElement('div')
-    const currentTaskTitle = document.createElement('div')
-    const currentTaskDesc = document.createElement('div')
-    const currentTaskDate = document.createElement('div')
-    const currentTaskPriority = document.createElement('div')
-    const currentTaskCheck = document.createElement('div')
-
-    currentTaskTitle.innerHTML = myProject[eId]['_task'][i]['_title']
-
-    currentTaskDesc.innerHTML = myProject[eId]['_task'][i]['_desc']
-    currentTaskDate.innerHTML = myProject[eId]['_task'][i]['_date']
-    currentTaskPriority.innerHTML = myProject[eId]['_task'][i]['_priority']
-    currentTaskCheck.innerHTML = myProject[eId]['_task'][i]['_check']
-
-    currentTask.appendChild(currentTaskTitle)
-    currentTask.appendChild(currentTaskDesc)
-    currentTask.appendChild(currentTaskDate)
-    currentTask.appendChild(currentTaskPriority)
-    currentTask.appendChild(currentTaskCheck)
-
-    task.appendChild(currentTask)
-  }
-
   const taskForm = document.createElement('form')
   const taskLabelTitle = document.createElement('label')
   const taskTitle = document.createElement('input')
@@ -99,6 +74,35 @@ function task (eId) {
 
   task.innerHTML = '<h2>Task</h2>'
   addTaskButton.innerHTML = 'Add task'
+
+  for (let i = 0; i < myProject[eId]['_task'].length; i += 1) {
+    const currentTask = document.createElement('div')
+    const currentTaskTitle = document.createElement('div')
+    const currentTaskDesc = document.createElement('div')
+    const currentTaskDate = document.createElement('div')
+    const currentTaskPriority = document.createElement('div')
+    const currentTaskCheck = document.createElement('div')
+    
+    currentTaskTitle.innerHTML = myProject[eId]['_task'][i]['_title']
+    currentTaskDesc.innerHTML = myProject[eId]['_task'][i]['_desc']
+    currentTaskDate.innerHTML = myProject[eId]['_task'][i]['_date']
+    currentTaskPriority.innerHTML = myProject[eId]['_task'][i]['_priority']
+    currentTaskCheck.innerHTML = myProject[eId]['_task'][i]['_check']
+
+    currentTask.appendChild(currentTaskTitle)
+    currentTask.appendChild(currentTaskDesc)
+    currentTask.appendChild(currentTaskDate)
+    currentTask.appendChild(currentTaskPriority)
+    currentTask.appendChild(currentTaskCheck)
+    alert(currentTask)
+    task.appendChild(currentTask)
+    console.log(task)
+  }
+  
+
+  
+
+
 
   task.appendChild(taskForm)
   taskForm.appendChild(taskLabelTitle)
@@ -145,7 +149,7 @@ function showProjects (content) {
   }
 
   for (let i = 0; i < myProject.length; i += 1) {
-    console.log('yess')
+    
     let projectTitle = document.createElement('button')
     projectTitle.setAttribute('id', i)
 
@@ -156,16 +160,19 @@ function showProjects (content) {
     content.appendChild(projectTitle)
     content.appendChild(taskTitle)
   }
+
 }
 
 function loadPage () {
   const projectColumn = document.getElementById('project')
   projectColumn.addEventListener('click', e => {
     let eId = e.target.id
+    console.log(eId)
     task(eId)
   })
-
+  projects()
   showProjects(projectColumn)
+  
 }
 
 export default loadPage
