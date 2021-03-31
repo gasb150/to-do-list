@@ -23,6 +23,15 @@ h2 {
   text-transform: uppercase;
 }
 
+.project button {
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+  text-shadow: whitesmoke;
+  font-size: x-large;
+  font-weight: 700;
+}
+
 .task h2 {
   text-align: center;
 }
