@@ -21,7 +21,7 @@ export default class Project {
 
  export const project1 = (() => {
       
-   const projectdef = new Project('Project title')
+  const projectdef = new Project('Project title')
   const todo1 = new ToDo("Task title","desc","date","priority","check")
   const todo2 = new ToDo("Task title2","desc2","date2","priority2","check2")
   projectdef.task = [todo1, todo2]
