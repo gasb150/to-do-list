@@ -1,6 +1,7 @@
 import ToDo from './todo'
 import Storage from './storage'
 import show from './display'
+import Project from './project'
 const add = (() => {
      function addProjectToProjects () {
     let myProject = JSON.parse(localStorage.getItem('myProject'))
@@ -9,6 +10,8 @@ const add = (() => {
     const project = new Project(pTitle)
     myProject.push(project)
     Storage.storageMyProjects(myProject)
+
+    window.location.reload();
   }
 
   function addTask (eId,taskList, taskForm) {
@@ -28,7 +31,8 @@ const add = (() => {
     return (myProject)
   }
   return {
-      addTask
+      addTask,
+      addProjectToProjects
   }
  
 })()
