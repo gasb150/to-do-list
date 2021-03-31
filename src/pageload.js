@@ -2,19 +2,20 @@ import Storage from './storage'
 import Project, { project1 } from './project'
 
 function projects() {
-  const project = document.getElementById('project')
-  const addProjectButton = document.createElement('button')
+  const project = document.getElementById('project');
+  const addProjectButton = document.createElement('button');
+  addProjectButton.classList.add("addButton");
 
-  project.innerHTML = '<h2>Projects</h2>'
-  addProjectButton.innerHTML = 'Add Project'
-  const form = document.createElement('form')
-  const label = document.createElement('label')
-  const input = document.createElement('input')
+  project.innerHTML = '<h2>Projects</h2>';
+  addProjectButton.innerHTML = '+';
+  const form = document.createElement('form');
+  const label = document.createElement('label');
+  const input = document.createElement('input');
 
-  label.setAttribute('for', 'ptitle')
-  input.setAttribute('type', 'text')
-  input.setAttribute('id', 'ptitle')
-  input.setAttribute('name', 'ptitle')
+  label.setAttribute('for', 'ptitle');
+  input.setAttribute('type', 'text');
+  input.setAttribute('id', 'ptitle');
+  input.setAttribute('name', 'ptitle');
 
   addProjectButton.addEventListener('click', () => {
     addProjectToProjects()
