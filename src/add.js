@@ -21,9 +21,17 @@ const add = (() => {
     const inTaskDesc = document.getElementById('descriptionInput').value
     const inTaskDate = document.getElementById('dateInput').value
     const inTaskPriority = document.getElementById('priorityInput').value
-    const inTaskCheck = document.getElementById('checkInput').value
+    const inTaskCheck = document.getElementById('checkInput')
+    console.log(inTaskCheck.checked)
+    let checkStatus
+    if (inTaskCheck.checked === true){
+        checkStatus = 'done'
+        
+    } else {
+        checkStatus = 'un-done'
+    }
   
-    const task = new ToDo (inTaskTitle, inTaskDesc, inTaskDate, inTaskPriority, inTaskCheck)
+    const task = new ToDo (inTaskTitle, inTaskDesc, inTaskDate, inTaskPriority, checkStatus)
   
     tasks.push(task)
     Storage.storageMyProjects(myProject)
