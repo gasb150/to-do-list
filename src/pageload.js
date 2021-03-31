@@ -19,7 +19,7 @@ function projects() {
   input.setAttribute('name', 'ptitle');
 
   addProjectButton.addEventListener('click', () => {
-    addProjectToProjects()
+    addProjectToProjects();
   })
 
   form.appendChild(label)
@@ -33,50 +33,55 @@ function projects() {
 
 function task (eId) {
   // Test
-  const task = document.getElementById('task')
+  const task = document.getElementById('task');
 
-  let myProject = JSON.parse(localStorage.getItem('myProject'))
-  const taskForm = document.createElement('form')
-  const taskLabelTitle = document.createElement('label')
-  const taskTitle = document.createElement('input')
-  const taskLabelDesc = document.createElement('label')
-  const taskDesc = document.createElement('input')
-  const taskLabelDate = document.createElement('label')
-  const taskDate = document.createElement('input')
-  const taskLabelPriority = document.createElement('label')
-  const taskPriority = document.createElement('input')
-  const taskLabelCheck = document.createElement('label')
-  const taskCheck = document.createElement('checkbox')
-  const addTaskButton = document.createElement('button')
+  let myProject = JSON.parse(localStorage.getItem('myProject'));
+  const taskForm = document.createElement('form');
+  const taskLabelTitle = document.createElement('label');
+  const taskTitle = document.createElement('input');
+  const taskLabelDesc = document.createElement('label');
+  const taskDesc = document.createElement('input');
+  const taskLabelDate = document.createElement('label');
+  const taskDate = document.createElement('input');
+  const taskLabelPriority = document.createElement('label');
+  const taskPriority = document.createElement('input');
+  const taskLabelCheck = document.createElement('label');
+  const taskCheck = document.createElement('checkbox');
+  const addTaskButton = document.createElement('button');
 
-  taskLabelTitle.setAttribute('for', 'Title')
-  taskTitle.setAttribute('type', 'text')
-  taskTitle.setAttribute('id', 'titleInput')
-  taskTitle.setAttribute('name', 'title')
+  taskLabelTitle.setAttribute('for', 'Title');
+  taskTitle.setAttribute('type', 'text');
+  taskTitle.setAttribute('id', 'titleInput');
+  taskTitle.setAttribute('name', 'title');
 
-  taskLabelDesc.setAttribute('for', 'Description')
-  taskDesc.setAttribute('type', 'text')
-  taskDesc.setAttribute('id', 'descriptionInput')
-  taskDesc.setAttribute('name', 'description')
+  taskLabelDesc.setAttribute('for', 'Description');
+  taskDesc.setAttribute('type', 'text');
+  taskDesc.setAttribute('id', 'descriptionInput');
+  taskDesc.setAttribute('name', 'description');
 
-  taskLabelDate.setAttribute('for', 'Due date')
-  taskDate.setAttribute('type', 'text')
-  taskDate.setAttribute('id', 'dateInput')
-  taskDate.setAttribute('name', 'date')
+  taskLabelDate.setAttribute('for', 'Due date');
+  taskDate.setAttribute('type', 'text');
+  taskDate.setAttribute('id', 'dateInput');
+  taskDate.setAttribute('name', 'date');
 
-  taskLabelPriority.setAttribute('for', 'Priority')
-  taskPriority.setAttribute('type', 'text')
-  taskPriority.setAttribute('id', 'priorityInput')
-  taskPriority.setAttribute('name', 'priority')
+  taskLabelPriority.setAttribute('for', 'Priority');
+  taskPriority.setAttribute('type', 'text');
+  taskPriority.setAttribute('id', 'priorityInput');
+  taskPriority.setAttribute('name', 'priority');
 
-  taskLabelCheck.setAttribute('for', 'Check')
-  taskCheck.setAttribute('type', 'checkbox')
-  taskCheck.setAttribute('id', 'checkInput')
-  taskCheck.setAttribute('name', 'check')
+  taskLabelCheck.setAttribute('for', 'Check');
+  taskCheck.setAttribute('type', 'checkbox');
+  taskCheck.setAttribute('id', 'checkInput');
+  taskCheck.setAttribute('name', 'check');
 
-  task.innerHTML = '<h2>Task</h2>'
-  addTaskButton.innerHTML = 'Add task'
-  addTaskButton.setAttribute('type', 'submit')
+  task.innerHTML = '<h2>Task</h2>';
+  addTaskButton.innerHTML = 'Add task';
+  taskLabelTitle.innerHTML = '<h4>Title</h4><br>';
+  taskLabelDesc.innerHTML = '<h4>Description</h4><br>';
+  taskLabelDate.innerHTML = '<h4>Due Date</h4><br>';
+  taskLabelPriority.innerHTML = '<h4>Priority</h4><br>';
+  addTaskButton.setAttribute('type', 'submit');
+  addTaskButton.classList.add("submit");
 
   for (let i = 0; i < myProject[eId]['_task'].length; i += 1) {
     const currentTask = document.createElement('div')
@@ -85,7 +90,7 @@ function task (eId) {
     const currentTaskDate = document.createElement('div')
     const currentTaskPriority = document.createElement('div')
     const currentTaskCheck = document.createElement('div')
-    
+
     currentTaskTitle.innerHTML = myProject[eId]['_task'][i]['_title']
     currentTaskDesc.innerHTML = myProject[eId]['_task'][i]['_desc']
     currentTaskDate.innerHTML = myProject[eId]['_task'][i]['_date']
@@ -101,11 +106,6 @@ function task (eId) {
     task.appendChild(currentTask)
     console.log(task)
   }
-  
-
-  
-
-
 
   task.appendChild(taskForm)
   taskForm.appendChild(taskLabelTitle)
@@ -139,10 +139,21 @@ function addProjectToProjects () {
   const project = new Project(pTitle)
   myProject.push(project)
   Storage.storageMyProjects(myProject)
+
+  myProject.appendChild(toggler());
+}
+
+function toggler() {
+  let toggle = document.getElementById("pTitle");
+  if (toggle.style.display === "none") {
+    toggle.style.display = "block";
+  } else {
+    toggle.style.display = "none";
+  }
+  return toggler
 }
 
 function addTask (eId) {
-  
   let myProject = JSON.parse(localStorage.getItem('myProject'))
   let tasks = myProject[eId]['_task']
   const inTaskTitle = document.getElementById('titleInput').value
