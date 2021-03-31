@@ -51,7 +51,7 @@ input {
   width: 65%;
 }
 
-.addButton {
+.project .addButton {
   border: 2px solid lightgrey;
 	background-color:blue;
 	font-size: 18px;
