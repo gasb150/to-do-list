@@ -3,19 +3,20 @@ import Project, { project1 } from './project'
 import ToDo from './todo'
 
 function projects() {
-  const project = document.getElementById('project')
-  const addProjectButton = document.createElement('button')
+  const project = document.getElementById('project');
+  const addProjectButton = document.createElement('button');
+  addProjectButton.classList.add("addButton");
 
-  project.innerHTML = '<h2>Projects</h2>'
-  addProjectButton.innerHTML = 'Add Project'
-  const form = document.createElement('form')
-  const label = document.createElement('label')
-  const input = document.createElement('input')
+  project.innerHTML = '<h2>Projects</h2>';
+  addProjectButton.innerHTML = '+';
+  const form = document.createElement('form');
+  const label = document.createElement('label');
+  const input = document.createElement('input');
 
-  label.setAttribute('for', 'ptitle')
-  input.setAttribute('type', 'text')
-  input.setAttribute('id', 'ptitle')
-  input.setAttribute('name', 'ptitle')
+  label.setAttribute('for', 'ptitle');
+  input.setAttribute('type', 'text');
+  input.setAttribute('id', 'ptitle');
+  input.setAttribute('name', 'ptitle');
 
   addProjectButton.addEventListener('click', () => {
     addProjectToProjects()
@@ -187,13 +188,15 @@ function showProjects (content) {
 
 function loadPage () {
   const projectColumn = document.getElementById('project')
-  projectColumn.addEventListener('click', e => {
+  const projectList = document.createElement('div')
+  projectList.addEventListener('click', e => {
     let eId = e.target.id
     console.log(eId)
     task(eId)
   })
   projects()
-  showProjects(projectColumn)
+  showProjects(projectList)
+  projectColumn.appendChild(projectList)
   
 }
 
