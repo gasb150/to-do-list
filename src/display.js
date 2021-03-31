@@ -80,7 +80,12 @@ function showProjects (content) {
   
     task.innerHTML = '<h2>Task</h2>'
     addTaskButton.innerHTML = 'Add task'
+    taskLabelTitle.innerHTML = '<h4>Title</h4><br>';
+    taskLabelDesc.innerHTML = '<h4>Description</h4><br>';
+    taskLabelDate.innerHTML = '<h4>Due Date</h4><br>';
+    taskLabelPriority.innerHTML = '<h4>Priority</h4><br>';
     addTaskButton.setAttribute('type', 'submit')
+    addTaskButton.classList.add("submit");
   
     let y = currentTaskList(myProject, eId, taskList)
    console.log(y)

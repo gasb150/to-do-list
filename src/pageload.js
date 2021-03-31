@@ -10,6 +10,7 @@ import show from './display'
 
 
 
+
 function loadPage () {
   const projectColumn = document.getElementById('project')
   const projectList = document.createElement('div')
