@@ -64,7 +64,7 @@ function showProjects (content) {
     taskDesc.setAttribute('name', 'description')
   
     taskLabelDate.setAttribute('for', 'Due date')
-    taskDate.setAttribute('type', 'text')
+    taskDate.setAttribute('type', 'date')
     taskDate.setAttribute('id', 'dateInput')
     taskDate.setAttribute('name', 'date')
   
