@@ -23,9 +23,17 @@ h2 {
   text-transform: uppercase;
 }
 
+label {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 input {
   border-radius: 8px;
   margin: 10px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .addButton {
