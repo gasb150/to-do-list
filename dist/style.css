@@ -12,10 +12,12 @@ body {
 
 .container-fluid .project {
   background-color: lightskyblue;
+  height: 88.5vh;
 }
 
 .container-fluid .task {
   background-color: lavender;
+  height: 88.5vh;
 }
 
 h2 {
@@ -60,26 +62,6 @@ input {
 	border-radius: 999px;
 	position: relative;
 	
-	&:after,
-	&:before {
-		content: "";
-		display: block;
-		background-color: grey;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-	
-	&:before {
-		height: 1em;
-		width: 0.2em;
-	}
-
-	&:after {
-		height: 0.2em;
-		width: 1em;
-	}
 }
 
 .submit {
@@ -100,7 +82,7 @@ input {
   margin-top: 5px;
   color: white;
   text-decoration: none;
-  font-size: medium;
+  font-size: small;
   padding: 2px;
   margin-right: 3px;
 }
@@ -112,4 +94,31 @@ input {
 
 .card {
   width: 9rem;
+  border: 2px solid black;
+  margin-right: 10px;
+  height: 9rem;
 }
+
+.card-title {
+  background-color: navy;
+  color: whitesmoke;
+}
+
+.taskStatus {
+  display: inline;
+  float: left;
+  width: 4rem;
+  color: white;
+  background-color: yellowgreen;
+}
+
+.taskDelete {
+  position: relative;
+  display: inline;
+  float: right;
+  bottom: 26px;
+  background-color: red;
+  color: white;
+  width: 4rem;
+}
+
