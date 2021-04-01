@@ -17,19 +17,6 @@ const Validation = (() => {
     return validation;
   }
 
-<<<<<<< HEAD
-  function validateTask(task) {
-    let validation = true;
-    if (task._title === '') {
-      const title = document.getElementById('titlemsj');
-      title.innerHTML = "Author can't be blank";
-      title.style.color = 'Red';
-
-      validation = false;
-    } else {
-      const author = document.getElementById('titlemsj');
-      author.innerHTML = '';
-=======
   function validateTask(task, type) {
  
     let validation = true;
@@ -68,7 +55,6 @@ const Validation = (() => {
         title.innerHTML = '';
       }
   return validation
->>>>>>> 47134e3ca7d144bd74e675466e46952bc531097c
     }
 
     if (task._desc === '') {

@@ -1,16 +1,7 @@
-<<<<<<< HEAD
-// eslint-disable-next-line no-underscore-dangle
-
-import add from './add';
-import Storage from './storage';
-import Project, { project1 } from './project';
-=======
 import add from './add'
 import Storage from './storage'
 import Project, { project1 } from './project'
 import Validation from "./validation"
-
->>>>>>> 47134e3ca7d144bd74e675466e46952bc531097c
 
 const show = (() => {
   function showProjects(content) {
@@ -269,16 +260,6 @@ const show = (() => {
       editTaskPriority.value = currentTask._priority;
 
       updateBtn.addEventListener('click', () => {
-<<<<<<< HEAD
-        currentTask._title = editTaskTitle.value;
-        currentTask._desc = editTaskDesc.value;
-        currentTask._date = editTaskDate.value;
-        currentTask._priority = editTaskPriority.value;
-        Storage.storageMyProjects(myProject);
-        showTask(eId);
-      });
-    }));
-=======
         currentTask['_title'] = editTaskTitle.value
         currentTask['_desc'] = editTaskDesc.value
         currentTask['_date'] = editTaskDate.value
@@ -298,7 +279,6 @@ const show = (() => {
       })
 
     }))
->>>>>>> 47134e3ca7d144bd74e675466e46952bc531097c
   }
 
   function deleteTask(eId, myProject) {
