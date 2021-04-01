@@ -136,8 +136,9 @@ const show = (() => {
     task.appendChild(taskList);
     task.appendChild(taskForm);
 
-     statusChange(eId, myProject) 
+    statusChange(eId, myProject) 
      deleteTask(eId, myProject)
+     UpdateAll(eId, myProject)
   }
 
   function currentTaskList(myProject, eId, taskList) {
@@ -150,6 +151,7 @@ const show = (() => {
       const currentTaskPriority = document.createElement('div')
       const currentTaskCheck = document.createElement('div')
       const currentTaskDelete = document.createElement('div')
+      const currentTaskEdit = document.createElement('div')
 
       currentTaskTitle.innerHTML = myProject[eId]['_task'][i]['_title']
       currentTaskDesc.innerHTML = myProject[eId]['_task'][i]['_desc']
@@ -169,14 +171,16 @@ const show = (() => {
       }
       currentTaskCheck.innerHTML = `<button class="taskStatus" type='submit' id=myCheck${i} ${value}>${stats}</button>` 
       currentTaskDelete.innerHTML = `<button class="taskDelete" type='submit' id=delete${i} ${value}>Remove</button>` 
+      currentTaskEdit.innerHTML = `<button class="taskEdit" type='submit' id=edit${i} ${value}>Edit</button>` 
       currentTask.appendChild(currentTaskTitle)
       currentTask.appendChild(currentTaskDesc)
       currentTask.appendChild(currentTaskDate)
       currentTask.appendChild(currentTaskPriority)
       currentTask.appendChild(currentTaskCheck)
       currentTask.appendChild(currentTaskDelete)
+      currentTask.appendChild(currentTaskEdit)
       taskList.appendChild(currentTask)
-
+      
     }
     return taskList.outerHTML
   }
@@ -185,7 +189,8 @@ const show = (() => {
    function statusChange(eId, myProject) {
     
      let statusBtns = Array.from(document.getElementsByClassName('taskStatus'))
-    
+    console.log(statusBtns)
+    console.log(eId)
      statusBtns.forEach(btn => btn.addEventListener('click', (e) =>{
       let target = e.target
       let status = target.innerHTML
@@ -212,35 +217,29 @@ const show = (() => {
     Storage.storageMyProjects(myProject)
   }
 
+  function UpdateAll(){
+    let editBtns = Array.from(document.getElementsByClassName('taskEdit'))
+     console.log(editBtns)
+  }
+
   function deleteTask(eId, myProject) {
-    
+ 
     let deleteBtns = Array.from(document.getElementsByClassName('taskDelete'))
-   
+   console.log(deleteBtns)
     deleteBtns.forEach(btn => btn.addEventListener('click', (e) =>{
      let target = e.target
-    console.log(target.parentNode.parentNode.remove())
-    //  if (status === "Done"){
-    //    target.innerHTML = "Undone"
-    //   const st = false
-    //   deleteMyTask(eId,target, st, myProject)
-    //  } else {
-    //    console.log(target)
-    //    const st = true
-    //   target.innerHTML = "Done"
-    //   deleteMyTask(eId,target, st, myProject)
-    //  }
+     let id = target.id.slice(6)
+     
+     myProject[eId]['_task'].splice(id,1);
+     Storage.storageMyProjects(myProject);
+     let taskList = document.getElementById('taskList')
+     console.log(taskList)
+     showTask(eId)
    }))
 
   }
 
-//   function deleteMyTask(eId, target, st, myProject) {
-//     console.log(eId)
-//     let id = target.id.slice(7)
-   
-//    myProject[eId]['_task'][id]['_check']=st
-  
-//    Storage.storageMyProjects(myProject)
-//  }
+
 
 
   function projects() {
