@@ -317,8 +317,9 @@ const show = (() => {
     form.appendChild(label);
     form.appendChild(input);
 
-    project.appendChild(addProjectButton);
+    
     project.appendChild(form);
+    project.appendChild(addProjectButton);
     project.appendChild(projectMsj);
 
     return project;
