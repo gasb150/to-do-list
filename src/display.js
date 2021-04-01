@@ -16,10 +16,12 @@ const show = (() => {
       let projectTitle = document.createElement('button');
       projectTitle.setAttribute('id', i);
 
-      let taskTitle = document.createElement('div');
+      let buttonContent = document.createElement('div');
       projectTitle.innerHTML = myProject[i]['_name'];
-      content.appendChild(removeButton);
-      content.appendChild(projectTitle);
+
+      content.appendChild(buttonContent);
+      buttonContent.appendChild(removeButton);
+      buttonContent.appendChild(projectTitle);
 
       removeButton.addEventListener('click',() =>{
         Storage.removeProject(this.id);
@@ -39,7 +41,6 @@ const show = (() => {
   }
 
   function showTask(eId) {
-    // Test
 
     const task = document.getElementById('task');
 

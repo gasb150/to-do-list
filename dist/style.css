@@ -62,26 +62,6 @@ input {
 	border-radius: 999px;
 	position: relative;
 	
-	&:after,
-	&:before {
-		content: "";
-		display: block;
-		background-color: grey;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-	
-	&:before {
-		height: 1em;
-		width: 0.2em;
-	}
-
-	&:after {
-		height: 0.2em;
-		width: 1em;
-	}
 }
 
 .submit {
@@ -115,8 +95,8 @@ input {
 .card {
   width: 9rem;
   border: 2px solid black;
-  height: 8.5rem;
   margin-right: 10px;
+  height: 9rem;
 }
 
 .card-title {
@@ -129,6 +109,7 @@ input {
   float: left;
   width: 4rem;
   color: white;
+  background-color: yellowgreen;
 }
 
 .taskDelete {
@@ -140,3 +121,4 @@ input {
   color: white;
   width: 4rem;
 }
+
