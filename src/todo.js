@@ -7,7 +7,7 @@ export default class ToDo {
       this._check = check;
     }
   
-    // Getters 
+
     get title(){
       return this._title;
     }
@@ -28,7 +28,7 @@ export default class ToDo {
       return this._check;
     }
   
-    //Setters
+
     set title(title) {
       this._title = title;
     }
