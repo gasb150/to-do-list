@@ -13,13 +13,14 @@ const show = (() => {
       const removeButton = document.createElement('button');
       removeButton.classList.add('remove');
       removeButton.id = i;
-      let projectTitle = document.createElement('button')
-      projectTitle.setAttribute('id', i)
+      let projectTitle = document.createElement('button');
+      projectTitle.setAttribute('id', i);
 
-      let taskTitle = document.createElement('div')
-      projectTitle.innerHTML = myProject[i]['_name']
-      content.appendChild(removeButton)
-      content.appendChild(projectTitle)
+      let taskTitle = document.createElement('div');
+
+      projectTitle.innerHTML = myProject[i]['_name'];
+      content.appendChild(removeButton);
+      content.appendChild(projectTitle);
 
       removeButton.addEventListener('click',() =>{
         Storage.removeProject(this.id);
