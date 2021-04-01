@@ -40,7 +40,20 @@ const add = (() => {
       checkStatus = false;
     }
 
+<<<<<<< HEAD
     const task = new ToDo(inTaskTitle, inTaskDesc, inTaskDate, inTaskPriority, checkStatus);
+=======
+    const task = new ToDo (inTaskTitle, inTaskDesc, inTaskDate, inTaskPriority, checkStatus)
+   
+ 
+     if (Validation.validateTask(task, '') === true) {
+    tasks.push(task)
+    Storage.storageMyProjects(myProject)
+   
+    return (myProject)
+  
+     } else {
+>>>>>>> 47134e3ca7d144bd74e675466e46952bc531097c
 
     if (Validation.validateTask(task) === true) {
       tasks.push(task);
