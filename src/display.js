@@ -17,7 +17,6 @@ const show = (() => {
       projectTitle.setAttribute('id', i);
 
       let taskTitle = document.createElement('div');
-
       projectTitle.innerHTML = myProject[i]['_name'];
       content.appendChild(removeButton);
       content.appendChild(projectTitle);
@@ -189,12 +188,14 @@ const show = (() => {
       let status = target.innerHTML
       if (status === "Done"){
         target.innerHTML = "Undone"
+        target.style.backgroundColor = '#337ab7'
        const st = false
         UpdateStatus(eId,target, st, myProject)
       } else {
         console.log(target)
         const st = true
        target.innerHTML = "Done"
+       target.style.backgroundColor = '#4cae4c'
        UpdateStatus(eId,target, st, myProject)
       }
     }))
