@@ -15,8 +15,6 @@
       "no-param-reassign": "off",
       "eol-last": "off",
       "arrow-parens": "off",
-      "no-underscore-dangle":"off",
-      "no-unused-vars":"off",
       "no-use-before-define": ["error", {"functions": false, "classes": false, "variables": false}]
     },
     "ignorePatterns": [

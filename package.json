@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/gasb150/to-do-list#readme",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "css-loader": "^5.2.0",
     "style-loader": "^2.0.0",
     "webpack": "^5.28.0",
