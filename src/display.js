@@ -94,6 +94,7 @@ const show = (() => {
     taskCheck.setAttribute('id', 'checkInput');
     taskCheck.setAttribute('name', 'check');
     taskCheck.setAttribute('value', 'done')
+    taskCheck.classList.add('check');
 
     task.innerHTML = '<h2>Task</h2>';
     addTaskButton.innerHTML = 'Add task';
@@ -101,11 +102,13 @@ const show = (() => {
     taskLabelDesc.innerHTML = '<h4>Description</h4>';
     taskLabelDate.innerHTML = '<h4>Due Date</h4>';
     taskLabelPriority.innerHTML = '<h4>Priority</h4>';
-    taskLabelCheck.innerHTML = 'Complete'
+    taskLabelCheck.innerHTML = '<h4>Complete</h4>'
     addTaskButton.setAttribute('type', 'submit');
     addTaskButton.classList.add('submit');
 
-    let allTask = currentTaskList(myProject, eId, taskList)
+    let checked = document.createElement('div');
+    checked.classList.add('check-section');
+    let allTask = currentTaskList(myProject, eId, taskList);
 
 
     taskForm.appendChild(taskLabelTitle);
@@ -116,8 +119,10 @@ const show = (() => {
     taskForm.appendChild(taskDate);
     taskForm.appendChild(taskLabelPriority);
     taskForm.appendChild(taskPriority);
-    taskForm.appendChild(taskLabelCheck);
-    taskForm.appendChild(taskCheck);
+    taskLabelCheck.appendChild(taskCheck);
+    checked.appendChild(taskLabelCheck);
+    checked.appendChild(taskCheck);
+    taskForm.appendChild(checked);
     taskForm.appendChild(addTaskButton);
     taskPriority.appendChild(taskHigh);
     taskPriority.appendChild(taskMedium);
