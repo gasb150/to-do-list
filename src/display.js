@@ -62,7 +62,7 @@ const show = (() => {
       e.preventDefault();
 
       myProject = add.addTask(eId)
-       console.log( add.addTask(eId)  )
+ 
       if (myProject !== false) {
       taskList.innerHTML = ''
        taskList.innerHTML = currentTaskList(myProject, eId, taskList)

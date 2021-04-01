@@ -49,7 +49,7 @@ const add = (() => {
     return (myProject)
   
      } else {
-       console.log(Validation.validateTask(task))
+
        return Validation.validateTask(task);
      }
   
