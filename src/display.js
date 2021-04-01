@@ -10,15 +10,22 @@ const show = (() => {
     }
 
     for (let i = 0; i < myProject.length; i += 1) {
-
+      const removeButton = document.createElement('button');
+      removeButton.id = i;
       let projectTitle = document.createElement('button')
       projectTitle.setAttribute('id', i)
 
       let taskTitle = document.createElement('div')
       projectTitle.innerHTML = myProject[i]['_name']
-
+         let br = document.createElement('p')
+      content.appendChild(removeButton)
+      content.appendChild(br)
       content.appendChild(projectTitle)
-      content.appendChild(taskTitle)
+
+      removeButton.addEventListener('click',() =>{
+        Storage.removeProject(this.id);
+      });
+      removeButton.innerHTML = 'Remove';
     }
 
   }
@@ -129,7 +136,7 @@ const show = (() => {
     task.appendChild(taskList);
     task.appendChild(taskForm);
 
-    statusChange(eId) 
+    // statusChange(eId) 
   }
 
   function currentTaskList(myProject, eId, taskList) {
@@ -175,32 +182,31 @@ const show = (() => {
   }
 
 
-  function statusChange(eId) {
-    console.log(eId)
-      let checkBtns = document.querySelectorAll("input[type='checkbox']")
-      for (let i=0; i< checkBtns.length; i+= 1){ 
-            checkBtns[i].addEventListener('click', (e) => {
-        displayStatus(e, eId)
-      })
-    }
+//   function statusChange(eId) {
+//     console.log(eId)
+//       let checkBtns = document.querySelectorAll("input[type='checkbox']")
+//       for (let i=0; i< checkBtns.length; i+= 1){ 
+//             checkBtns[i].addEventListener('click', (e) => {
+//         displayStatus(e, eId)
+//       })
+//     }
     
-  }
-function displayStatus(e, eId){
+//   }
+// function displayStatus(e, eId){
 
-  let myProject = JSON.parse(localStorage.getItem('myProject'));
-        let taskList = document.getElementById('taskList')
+//   let myProject = JSON.parse(localStorage.getItem('myProject'));
+//         let taskList = document.getElementById('taskList')
 
-        let checkBoxStatus = document.getElementById(e.target.id)
+//         let checkBoxStatus = document.getElementById(e.target.id)
         
-        let checkId = ( parseInt(e.target.id.slice(7), 10))
+//         let checkId = ( parseInt(e.target.id.slice(7), 10))
 
-        myProject[eId]['_task'][checkId]['_check'] = checkBoxStatus.checked
+//         myProject[eId]['_task'][checkId]['_check'] = checkBoxStatus.checked
 
-        Storage.storageMyProjects(myProject)
-        console.log(taskList)
-         taskList.innerHTML = ''
-         taskList.innerHTML = currentTaskList(myProject, eId, taskList)
-}
+//         Storage.storageMyProjects(myProject)
+//          taskList.innerHTML = ''
+//          taskList.innerHTML = currentTaskList(myProject, eId, taskList)
+// }
 
   function projects() {
     const project = document.getElementById('project');
@@ -238,7 +244,7 @@ function displayStatus(e, eId){
     showTask,
     currentTaskList,
     projects,
-    statusChange
+    // statusChange
   }
 })()
 

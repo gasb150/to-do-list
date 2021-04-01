@@ -22,13 +22,13 @@ const add = (() => {
     const inTaskDate = document.getElementById('dateInput').value
     const inTaskPriority = document.getElementById('priorityInput').value
     const inTaskCheck = document.getElementById('checkInput')
-    console.log(inTaskCheck.checked)
+    
     let checkStatus
-    if (inTaskCheck.checked === true){
-        checkStatus = 'done'
+     if (inTaskCheck.checked === true){
+       checkStatus = true
         
     } else {
-        checkStatus = 'un-done'
+        checkStatus = false
     }
   
     const task = new ToDo (inTaskTitle, inTaskDesc, inTaskDate, inTaskPriority, checkStatus)
