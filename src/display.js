@@ -11,16 +11,16 @@ const show = (() => {
 
     for (let i = 0; i < myProject.length; i += 1) {
       const removeButton = document.createElement('button');
+      removeButton.classList.add('remove');
       removeButton.id = i;
-      let projectTitle = document.createElement('button')
-      projectTitle.setAttribute('id', i)
+      let projectTitle = document.createElement('button');
+      projectTitle.setAttribute('id', i);
 
-      let taskTitle = document.createElement('div')
-      projectTitle.innerHTML = myProject[i]['_name']
-         let br = document.createElement('p')
-      content.appendChild(removeButton)
-      content.appendChild(br)
-      content.appendChild(projectTitle)
+      let taskTitle = document.createElement('div');
+
+      projectTitle.innerHTML = myProject[i]['_name'];
+      content.appendChild(removeButton);
+      content.appendChild(projectTitle);
 
       removeButton.addEventListener('click',() =>{
         Storage.removeProject(this.id);
@@ -103,7 +103,7 @@ const show = (() => {
     taskLabelPriority.innerHTML = '<h4>Priority</h4>';
     taskLabelCheck.innerHTML = 'Complete'
     addTaskButton.setAttribute('type', 'submit');
-    addTaskButton.classList.add("submit");
+    addTaskButton.classList.add('submit');
 
     let allTask = currentTaskList(myProject, eId, taskList)
 
@@ -169,8 +169,6 @@ const show = (() => {
       }
       currentTaskCheck.innerHTML = `<button class="taskStatus" type='submit' id=myCheck${i} ${value}>${stats}</button>` 
       currentTaskDelete.innerHTML = `<button class="taskDelete" type='submit' id=delete${i} ${value}>Remove</button>` 
-
-
       currentTask.appendChild(currentTaskTitle)
       currentTask.appendChild(currentTaskDesc)
       currentTask.appendChild(currentTaskDate)
@@ -255,6 +253,7 @@ const show = (() => {
     const form = document.createElement('form');
     const label = document.createElement('label');
     const input = document.createElement('input');
+    label.innerHTML = "<b>Add project</b>"
 
     label.setAttribute('for', 'ptitle');
     input.setAttribute('type', 'text');

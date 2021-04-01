@@ -92,3 +92,24 @@ input {
   color: white;
   width: 120px;
 }
+
+.project .remove {
+  border: 1px solid;
+  background-color: red;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: medium;
+  padding: 2px;
+  margin-right: 3px;
+}
+
+#taskList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  width: 9rem;
+}
