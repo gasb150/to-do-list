@@ -2,14 +2,14 @@ const Validation = (() => {
   function validateProject(Project) {
     let validation = true;
     if (Project._name === '') {
-      const author = document.getElementById('projectMsj');
-      author.innerHTML = "Author can't be blank";
-      author.style.color = 'Red';
+      const projectAlert = document.getElementById('projectMsj');
+      projectAlert.innerHTML = "Project can't be blank";
+      projectAlert.style.color = 'Red';
 
       validation = false;
     } else {
-      const author = document.getElementById('projectMsj');
-      author.innerHTML = '';
+      const projectAlert = document.getElementById('projectMsj');
+      projectAlert.innerHTML = '';
     }
 
     return validation;
@@ -19,18 +19,18 @@ const Validation = (() => {
     let validation = true;
     if (task._title === '') {
       const title = document.getElementById(`titlemsj${type}`);
-      title.innerHTML = "Author can't be blank";
+      title.innerHTML = "Title can't be blank";
       title.style.color = 'Red';
 
       validation = false;
     } else {
-      const author = document.getElementById(`titlemsj${type}`);
-      author.innerHTML = '';
+      const projectAlert = document.getElementById(`titlemsj${type}`);
+      projectAlert.innerHTML = '';
     }
 
     if (task._desc === '') {
       const title = document.getElementById(`descmsj${type}`);
-      title.innerHTML = "Title can't be blank";
+      title.innerHTML = "Description can't be blank";
       title.style.color = 'Red';
 
       validation = false;
@@ -41,7 +41,7 @@ const Validation = (() => {
 
     if (task._date === '') {
       const title = document.getElementById(`datemsj${type}`);
-      title.innerHTML = 'Create a book with more than 0 pages';
+      title.innerHTML = "Date can't be blank";
       title.style.color = 'Red';
 
       validation = false;
