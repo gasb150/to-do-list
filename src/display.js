@@ -33,22 +33,23 @@ const show = (() => {
 
   function clean() {
 
-    document.getElementById('titleInput').value = ''
-    document.getElementById('descriptionInput').value = ''
-    document.getElementById('dateInput').value = ''
-    document.getElementById('priorityInput').value = ''
-    document.getElementById('checkInput').value = ''
+    document.getElementById('titleInputAdd').value = ''
+    document.getElementById('descriptionInputAdd').value = ''
+    document.getElementById('dateInputAdd').value = ''
+    document.getElementById('priorityInputAdd').value = ''
+    document.getElementById('checkInputAdd').value = ''
   }
 
   function showTask(eId) {
 
     const task = document.getElementById('task');
-
+    const taskEdit = document.createElement('div');
+    taskEdit.id = "editForm"
     const taskList = document.createElement('div');
     taskList.id = "taskList";
     let myProject = JSON.parse(localStorage.getItem('myProject'));
     const addTaskButton = document.createElement('button');
-    let taskForm = taskFormFields(eId)
+    let taskForm = taskFormFields(eId, '')
 
     task.innerHTML = '<h2>Task</h2>';
     addTaskButton.innerHTML = 'Add task';
@@ -73,6 +74,7 @@ const show = (() => {
       clean()
       taskList.innerHTML = currentTaskList(myProject, eId, taskList)
     })
+    task.appendChild(taskEdit)
     task.appendChild(taskList);
     task.appendChild(taskForm);
 
@@ -81,7 +83,7 @@ const show = (() => {
      UpdateAll(eId, myProject)
   }
 
-  function taskFormFields(eId){
+  function taskFormFields(eId, type){
     const taskForm = document.createElement('form');
     const taskLabelTitle = document.createElement('label');
     const taskTitle = document.createElement('input');
@@ -100,22 +102,22 @@ const show = (() => {
 
     taskLabelTitle.setAttribute('for', 'Title');
     taskTitle.setAttribute('type', 'text');
-    taskTitle.setAttribute('id', 'titleInput');
+    taskTitle.setAttribute('id', `titleInput${type}`);
     taskTitle.setAttribute('name', 'title');
 
     taskLabelDesc.setAttribute('for', 'Description');
     taskDesc.setAttribute('type', 'text');
-    taskDesc.setAttribute('id', 'descriptionInput');
+    taskDesc.setAttribute('id', `descriptionInput${type}`);
     taskDesc.setAttribute('name', 'description');
 
     taskLabelDate.setAttribute('for', 'Due date');
     taskDate.setAttribute('type', 'date');
-    taskDate.setAttribute('id', 'dateInput');
+    taskDate.setAttribute('id', `dateInput${type}`);
     taskDate.setAttribute('name', 'date');
 
     taskLabelPriority.setAttribute('for', 'Priority');
     taskPriority.setAttribute('type', 'text');
-    taskPriority.setAttribute('id', 'priorityInput');
+    taskPriority.setAttribute('id', `priorityInput${type}`);
 
     taskHigh.setAttribute('value', 'High');
     taskMedium.setAttribute('value', 'Medium');
@@ -126,7 +128,7 @@ const show = (() => {
 
     taskLabelCheck.setAttribute('for', 'Check');
     taskCheck.setAttribute('type', 'checkbox');
-    taskCheck.setAttribute('id', 'checkInput');
+    taskCheck.setAttribute('id', `checkInput${type}`);
     taskCheck.setAttribute('name', 'check');
     taskCheck.setAttribute('value', 'done')
     taskCheck.classList.add('check');
@@ -248,11 +250,20 @@ const show = (() => {
     let editBtns = Array.from(document.getElementsByClassName('taskEdit'))
     editBtns.forEach(btn => btn.addEventListener('click', (e) =>{
       let target = e.target
+      let editForm = document.getElementById('editForm')
       let updateBtn = document.createElement('button')
+      updateBtn.innerHTML= 'Update'
       let id = target.id.slice(6)
-      target.innerHTML = ''
-      target.appendChild(taskFormFields(eId))
-      target.appendChild(updateBtn)
+      editForm.innerHTML = ''
+      editForm.appendChild(taskFormFields(eId, 'Edit'))
+      editForm.appendChild(updateBtn)
+
+     console.log(taskFormFields)
+
+      currentTaskTitle.innerHTML = myProject[eId]['_task'][i]['_title']
+      // currentTaskDesc.innerHTML = myProject[eId]['_task'][i]['_desc']
+      // currentTaskDate.innerHTML = myProject[eId]['_task'][i]['_date']
+      // currentTaskPriority.innerHTML = myProject[eId]['_task'][i]['_priority']
 
 
     }))
