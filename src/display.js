@@ -196,7 +196,7 @@ const show = (() => {
       }
       currentTaskCheck.innerHTML = `<button class="taskStatus" type='submit' id=myCheck${i} ${value}>${stats}</button>` 
       currentTaskDelete.innerHTML = `<button class="taskDelete" type='submit' id=delete${i} ${value}>Remove</button>` 
-      currentTaskEdit.innerHTML = `<button class="taskEdit" type='submit' id=edit${i} ${value}>Edit</button>` 
+      currentTaskEdit.innerHTML = `<button class="taskEdit" type='submit' id=edit${i} ${value}>"."</button>` 
       currentTask.appendChild(currentTaskTitle)
       currentTask.appendChild(currentTaskDesc)
       currentTask.appendChild(currentTaskDate)
