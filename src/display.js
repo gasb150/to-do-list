@@ -11,6 +11,7 @@ const show = (() => {
 
     for (let i = 0; i < myProject.length; i += 1) {
       const removeButton = document.createElement('button');
+      removeButton.classList.add('remove');
       removeButton.id = i;
       let projectTitle = document.createElement('button')
       projectTitle.setAttribute('id', i)
@@ -103,7 +104,7 @@ const show = (() => {
     taskLabelPriority.innerHTML = '<h4>Priority</h4>';
     taskLabelCheck.innerHTML = 'Complete'
     addTaskButton.setAttribute('type', 'submit');
-    addTaskButton.classList.add("submit");
+    addTaskButton.classList.add('submit');
 
     let allTask = currentTaskList(myProject, eId, taskList)
 
@@ -167,8 +168,6 @@ const show = (() => {
       }
       currentTaskCheck.innerHTML = `<input type='checkbox' id=myCheck${i} ${value}></input>` + stats
 
-
-
       currentTask.appendChild(currentTaskTitle)
       currentTask.appendChild(currentTaskDesc)
       currentTask.appendChild(currentTaskDate)
@@ -218,6 +217,7 @@ const show = (() => {
     const form = document.createElement('form');
     const label = document.createElement('label');
     const input = document.createElement('input');
+    label.innerHTML = "<b>Add project</b>"
 
     label.setAttribute('for', 'ptitle');
     input.setAttribute('type', 'text');
