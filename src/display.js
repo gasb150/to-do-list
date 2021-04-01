@@ -18,9 +18,7 @@ const show = (() => {
 
       let taskTitle = document.createElement('div')
       projectTitle.innerHTML = myProject[i]['_name']
-         let br = document.createElement('p')
       content.appendChild(removeButton)
-      content.appendChild(br)
       content.appendChild(projectTitle)
 
       removeButton.addEventListener('click',() =>{
