@@ -12,10 +12,12 @@ body {
 
 .container-fluid .project {
   background-color: lightskyblue;
+  height: 88.5vh;
 }
 
 .container-fluid .task {
   background-color: lavender;
+  height: 88.5vh;
 }
 
 h2 {
