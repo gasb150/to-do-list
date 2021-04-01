@@ -141,14 +141,15 @@ const show = (() => {
 
   function currentTaskList(myProject, eId, taskList) {
     for (let i = 0; i < myProject[eId]['_task'].length; i += 1) {
-      const currentTask = document.createElement('div')
-      currentTask.classList.add('card')
-      const currentTaskTitle = document.createElement('div')
-      const currentTaskDesc = document.createElement('div')
-      const currentTaskDate = document.createElement('div')
-      const currentTaskPriority = document.createElement('div')
-      const currentTaskCheck = document.createElement('div')
-      const currentTaskDelete = document.createElement('div')
+      const currentTask = document.createElement('div');
+      currentTask.classList.add('card');
+      const currentTaskTitle = document.createElement('div');
+      currentTaskTitle.classList.add('card-title');
+      const currentTaskDesc = document.createElement('div');
+      const currentTaskDate = document.createElement('div');
+      const currentTaskPriority = document.createElement('div');
+      const currentTaskCheck = document.createElement('div');
+      const currentTaskDelete = document.createElement('div');
 
       currentTaskTitle.innerHTML = myProject[eId]['_task'][i]['_title']
       currentTaskDesc.innerHTML = myProject[eId]['_task'][i]['_desc']
