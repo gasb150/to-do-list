@@ -136,6 +136,7 @@ const show = (() => {
     task.appendChild(taskForm);
 
      statusChange(eId, myProject) 
+     deleteTask(eId, myProject)
   }
 
   function currentTaskList(myProject, eId, taskList) {
@@ -147,6 +148,7 @@ const show = (() => {
       const currentTaskDate = document.createElement('div')
       const currentTaskPriority = document.createElement('div')
       const currentTaskCheck = document.createElement('div')
+      const currentTaskDelete = document.createElement('div')
 
       currentTaskTitle.innerHTML = myProject[eId]['_task'][i]['_title']
       currentTaskDesc.innerHTML = myProject[eId]['_task'][i]['_desc']
@@ -165,13 +167,13 @@ const show = (() => {
         stats = 'Undone'
       }
       currentTaskCheck.innerHTML = `<button class="taskStatus" type='submit' id=myCheck${i} ${value}>${stats}</button>` 
-
+      currentTaskDelete.innerHTML = `<button class="taskDelete" type='submit' id=delete${i} ${value}>Remove</button>` 
       currentTask.appendChild(currentTaskTitle)
       currentTask.appendChild(currentTaskDesc)
       currentTask.appendChild(currentTaskDate)
       currentTask.appendChild(currentTaskPriority)
       currentTask.appendChild(currentTaskCheck)
-
+      currentTask.appendChild(currentTaskDelete)
       taskList.appendChild(currentTask)
 
     }
@@ -210,6 +212,36 @@ const show = (() => {
    
     Storage.storageMyProjects(myProject)
   }
+
+  function deleteTask(eId, myProject) {
+    
+    let deleteBtns = Array.from(document.getElementsByClassName('taskDelete'))
+   
+    deleteBtns.forEach(btn => btn.addEventListener('click', (e) =>{
+     let target = e.target
+    console.log(target.parentNode.parentNode.remove())
+    //  if (status === "Done"){
+    //    target.innerHTML = "Undone"
+    //   const st = false
+    //   deleteMyTask(eId,target, st, myProject)
+    //  } else {
+    //    console.log(target)
+    //    const st = true
+    //   target.innerHTML = "Done"
+    //   deleteMyTask(eId,target, st, myProject)
+    //  }
+   }))
+
+  }
+
+//   function deleteMyTask(eId, target, st, myProject) {
+//     console.log(eId)
+//     let id = target.id.slice(7)
+   
+//    myProject[eId]['_task'][id]['_check']=st
+  
+//    Storage.storageMyProjects(myProject)
+//  }
 
 
   function projects() {

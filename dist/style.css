@@ -112,4 +112,23 @@ input {
 
 .card {
   width: 9rem;
+  border: 2px solid black;
+  height: 8rem;
+}
+
+.taskStatus {
+  display: inline;
+  float: left;
+  width: 4rem;
+  color: white;
+}
+
+.taskDelete {
+  position: relative;
+  display: inline;
+  float: right;
+  bottom: 26px;
+  background-color: red;
+  color: white;
+  width: 4rem;
 }
