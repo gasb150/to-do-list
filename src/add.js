@@ -42,7 +42,7 @@ const add = (() => {
     const task = new ToDo (inTaskTitle, inTaskDesc, inTaskDate, inTaskPriority, checkStatus)
    
  
-     if (Validation.validateTask(task) === true) {
+     if (Validation.validateTask(task, '') === true) {
     tasks.push(task)
     Storage.storageMyProjects(myProject)
    

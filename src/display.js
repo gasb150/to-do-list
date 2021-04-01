@@ -1,6 +1,8 @@
 import add from './add'
 import Storage from './storage'
 import Project, { project1 } from './project'
+import Validation from "./validation"
+
 
 const show = (() => {
   function showProjects(content) {
@@ -283,8 +285,18 @@ const show = (() => {
         currentTask['_desc'] = editTaskDesc.value
         currentTask['_date'] = editTaskDate.value
         currentTask['_priority'] = editTaskPriority.value
-        Storage.storageMyProjects(myProject)
-        showTask(eId)
+
+        if (Validation.validateTask(currentTask, 'Edit') === true) {
+         
+          Storage.storageMyProjects(myProject)
+          showTask(eId)
+          return (myProject)
+        
+           } else {
+      
+             return Validation.validateTask(currentTask, 'Edit');
+           }
+      
       })
 
     }))
