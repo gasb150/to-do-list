@@ -129,6 +129,20 @@ const show = (() => {
     taskCheck.setAttribute('id', 'checkInput');
     taskCheck.setAttribute('name', 'check');
     taskCheck.setAttribute('value', 'done')
+    taskCheck.classList.add('check');
+
+    
+    taskLabelTitle.innerHTML = '<h4>Title</h4>';
+    taskLabelDesc.innerHTML = '<h4>Description</h4>';
+    taskLabelDate.innerHTML = '<h4>Due Date</h4>';
+    taskLabelPriority.innerHTML = '<h4>Priority</h4>';
+    taskLabelCheck.innerHTML = '<h4>Complete</h4>'
+
+
+    let checked = document.createElement('div');
+    checked.classList.add('check-section');
+ 
+
 
     taskForm.appendChild(taskLabelTitle);
     taskForm.appendChild(taskTitle);
@@ -138,15 +152,11 @@ const show = (() => {
     taskForm.appendChild(taskDate);
     taskForm.appendChild(taskLabelPriority);
     taskForm.appendChild(taskPriority);
-    taskForm.appendChild(taskLabelCheck);
-    taskForm.appendChild(taskCheck);
-
-    taskLabelTitle.innerHTML = '<h4>Title</h4>';
-    taskLabelDesc.innerHTML = '<h4>Description</h4>';
-    taskLabelDate.innerHTML = '<h4>Due Date</h4>';
-    taskLabelPriority.innerHTML = '<h4>Priority</h4>';
-    taskLabelCheck.innerHTML = 'Complete'
-
+    taskLabelCheck.appendChild(taskCheck);
+    checked.appendChild(taskLabelCheck);
+    checked.appendChild(taskCheck);
+    taskForm.appendChild(checked);
+    
     taskPriority.appendChild(taskHigh);
     taskPriority.appendChild(taskMedium);
     taskPriority.appendChild(taskLow);

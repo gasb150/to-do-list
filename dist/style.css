@@ -122,3 +122,12 @@ input {
   width: 4rem;
 }
 
+.check-section {
+  display: block;
+}
+
+.check-section .check {
+  position: relative;
+  right: 15rem;
+  bottom: 1.5rem;
+}
