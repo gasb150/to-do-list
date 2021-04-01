@@ -136,7 +136,7 @@ const show = (() => {
     task.appendChild(taskList);
     task.appendChild(taskForm);
 
-     statusChange(eId) 
+     statusChange(eId, myProject) 
   }
 
   function currentTaskList(myProject, eId, taskList) {
@@ -182,7 +182,7 @@ const show = (() => {
   }
 
 
-   function statusChange(eId) {
+   function statusChange(eId, myProject) {
     
      let statusBtns = Array.from(document.getElementsByClassName('taskStatus'))
     
@@ -190,15 +190,27 @@ const show = (() => {
       let target = e.target
       let status = target.innerHTML
       if (status === "Done"){
-     
         target.innerHTML = "Undone"
+       const st = false
+        UpdateStatus(eId,target, st, myProject)
       } else {
         console.log(target)
+        const st = true
        target.innerHTML = "Done"
+       UpdateStatus(eId,target, st, myProject)
       }
     }))
  
    }
+
+   function UpdateStatus(eId, target, st, myProject) {
+     console.log(eId)
+     let id = target.id.slice(7)
+    
+    myProject[eId]['_task'][id]['_check']=st
+   
+    Storage.storageMyProjects(myProject)
+  }
 
 
   function projects() {
