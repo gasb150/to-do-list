@@ -1,13 +1,15 @@
-// eslint-disable-next-line no-underscore-dangle
-
-import Project, { project1 } from './project';
+import Project, {project1} from './project'
 
 const Storage = (() => {
+
+
   function storageMyProjects(myProject) {
     localStorage.setItem('myProject', JSON.stringify(myProject));
+    
   }
 
-  function removeProject(id) {
+
+   function removeProject(id) {
     id = id;
     const myProject = JSON.parse(localStorage.getItem('myProject'));
     myProject.splice(id, 1);
@@ -15,12 +17,13 @@ const Storage = (() => {
 
     window.location.reload();
   }
-  return {
-    storageMyProjects,
+ return {
+     storageMyProjects,
+     
+     removeProject
 
-    removeProject,
+  }
 
-  };
-})();
+})()
 
 export default Storage;
