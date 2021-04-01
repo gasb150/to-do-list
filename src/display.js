@@ -1,6 +1,7 @@
 import add from './add'
 import Storage from './storage'
 import Project, { project1 } from './project'
+
 const show = (() => {
   function showProjects(content) {
     let myProject = JSON.parse(localStorage.getItem('myProject'))
@@ -29,15 +30,6 @@ const show = (() => {
       removeButton.innerHTML = 'Remove';
     }
 
-  }
-
-  function clean() {
-
-    document.getElementById('titleInputAdd').value = ''
-    document.getElementById('descriptionInputAdd').value = ''
-    document.getElementById('dateInputAdd').value = ''
-    document.getElementById('priorityInputAdd').value = ''
-    document.getElementById('checkInputAdd').value = ''
   }
 
   function showTask(eId) {
@@ -70,27 +62,33 @@ const show = (() => {
       e.preventDefault();
 
       myProject = add.addTask(eId)
+       console.log( add.addTask(eId)  )
+      if (myProject !== false) {
       taskList.innerHTML = ''
-      clean()
-      taskList.innerHTML = currentTaskList(myProject, eId, taskList)
+       taskList.innerHTML = currentTaskList(myProject, eId, taskList)
+      showTask(eId)
+    } 
     })
     task.appendChild(taskEdit)
     task.appendChild(taskList);
     task.appendChild(taskForm);
-
     statusChange(eId, myProject) 
-     deleteTask(eId, myProject)
-     UpdateAll(eId, myProject)
+    deleteTask(eId, myProject)
+    UpdateAll(eId, myProject)
+   
   }
 
   function taskFormFields(eId, type){
     const taskForm = document.createElement('form');
     const taskLabelTitle = document.createElement('label');
     const taskTitle = document.createElement('input');
+    const taskTitleMsj = document.createElement('p')
     const taskLabelDesc = document.createElement('label');
     const taskDesc = document.createElement('input');
+    const taskDescMsj = document.createElement('p')
     const taskLabelDate = document.createElement('label');
     const taskDate = document.createElement('input');
+    const taskDateMsj = document.createElement('p')
     const taskLabelPriority = document.createElement('label');
     const taskPriority = document.createElement('select');
     const taskHigh = document.createElement('option');
@@ -133,7 +131,10 @@ const show = (() => {
     taskCheck.setAttribute('value', 'done')
     taskCheck.classList.add('check');
 
-    
+    taskTitleMsj.id = `titlemsj${type}`
+    taskDescMsj.id = `descmsj${type}`
+    taskDateMsj.id  = `datemsj${type}`
+
     taskLabelTitle.innerHTML = '<h4>Title</h4>';
     taskLabelDesc.innerHTML = '<h4>Description</h4>';
     taskLabelDate.innerHTML = '<h4>Due Date</h4>';
@@ -147,11 +148,16 @@ const show = (() => {
 
 
     taskForm.appendChild(taskLabelTitle);
+    
     taskForm.appendChild(taskTitle);
-    taskForm.appendChild(taskLabelDesc);
+    taskForm.appendChild(taskTitleMsj)
+       taskForm.appendChild(taskLabelDesc);
     taskForm.appendChild(taskDesc);
+    taskForm.appendChild(taskDescMsj)
+    
     taskForm.appendChild(taskLabelDate);
     taskForm.appendChild(taskDate);
+    taskForm.appendChild(taskDateMsj)
     taskForm.appendChild(taskLabelPriority);
     taskForm.appendChild(taskPriority);
     taskLabelCheck.appendChild(taskCheck);
@@ -198,7 +204,7 @@ const show = (() => {
       }
       currentTaskCheck.innerHTML = `<button class="taskStatus" type='submit' id=myCheck${i} ${value}>${stats}</button>` 
       currentTaskDelete.innerHTML = `<button class="taskDelete" type='submit' id=delete${i} ${value}>Remove</button>` 
-      currentTaskEdit.innerHTML = `<button class="taskEdit" type='submit' id=edit${i} ${value}>Edit</button>` 
+      currentTaskEdit.innerHTML = `<button class="taskEdit" type='submit' id=edit${i} ${value}>"."</button>` 
       currentTask.appendChild(currentTaskTitle)
       currentTask.appendChild(currentTaskDesc)
       currentTask.appendChild(currentTaskDate)
@@ -216,8 +222,7 @@ const show = (() => {
    function statusChange(eId, myProject) {
     
      let statusBtns = Array.from(document.getElementsByClassName('taskStatus'))
-    console.log(statusBtns)
-    console.log(eId)
+  
      statusBtns.forEach(btn => btn.addEventListener('click', (e) =>{
       let target = e.target
       let status = target.innerHTML
@@ -227,7 +232,7 @@ const show = (() => {
        const st = false
         UpdateStatus(eId,target, st, myProject)
       } else {
-        console.log(target)
+   
         const st = true
        target.innerHTML = "Done"
        target.style.backgroundColor = '#4cae4c'
@@ -238,7 +243,7 @@ const show = (() => {
    }
 
    function UpdateStatus(eId, target, st, myProject) {
-     console.log(eId)
+
      let id = target.id.slice(7)
     
     myProject[eId]['_task'][id]['_check']=st
@@ -252,19 +257,35 @@ const show = (() => {
       let target = e.target
       let editForm = document.getElementById('editForm')
       let updateBtn = document.createElement('button')
+      updateBtn.id = 'updateEditBtn'
       updateBtn.innerHTML= 'Update'
       let id = target.id.slice(6)
       editForm.innerHTML = ''
       editForm.appendChild(taskFormFields(eId, 'Edit'))
       editForm.appendChild(updateBtn)
 
-     console.log(taskFormFields)
+    
+      let i = e.target.id.slice(4)
 
-      currentTaskTitle.innerHTML = myProject[eId]['_task'][i]['_title']
-      // currentTaskDesc.innerHTML = myProject[eId]['_task'][i]['_desc']
-      // currentTaskDate.innerHTML = myProject[eId]['_task'][i]['_date']
-      // currentTaskPriority.innerHTML = myProject[eId]['_task'][i]['_priority']
-
+     let editTaskTitle = document.getElementById('titleInputEdit')
+     let editTaskDesc = document.getElementById('descriptionInputEdit')
+     let editTaskDate = document.getElementById('dateInputEdit')
+     let editTaskPriority = document.getElementById('priorityInputEdit')
+     let currentTask =  myProject[eId]['_task'][i]
+      editTaskTitle.value = currentTask['_title']
+      editTaskDesc.value = currentTask['_desc']
+      editTaskDate.value = currentTask['_date']
+      editTaskPriority.value = currentTask['_priority']
+     
+     
+      updateBtn.addEventListener('click', () => {
+        currentTask['_title'] = editTaskTitle.value
+        currentTask['_desc'] = editTaskDesc.value
+        currentTask['_date'] = editTaskDate.value
+        currentTask['_priority'] = editTaskPriority.value
+        Storage.storageMyProjects(myProject)
+        showTask(eId)
+      })
 
     }))
   }
@@ -272,7 +293,7 @@ const show = (() => {
   function deleteTask(eId, myProject) {
  
     let deleteBtns = Array.from(document.getElementsByClassName('taskDelete'))
-   console.log(deleteBtns)
+
     deleteBtns.forEach(btn => btn.addEventListener('click', (e) =>{
      let target = e.target
      let id = target.id.slice(6)
@@ -280,7 +301,7 @@ const show = (() => {
      myProject[eId]['_task'].splice(id,1);
      Storage.storageMyProjects(myProject);
      let taskList = document.getElementById('taskList')
-     console.log(taskList)
+ 
      showTask(eId)
    }))
 
@@ -299,13 +320,14 @@ const show = (() => {
     const form = document.createElement('form');
     const label = document.createElement('label');
     const input = document.createElement('input');
+    const projectMsj = document.createElement('p')
     label.innerHTML = "<b>Add project</b>"
 
     label.setAttribute('for', 'ptitle');
     input.setAttribute('type', 'text');
     input.setAttribute('id', 'ptitle');
     input.setAttribute('name', 'ptitle');
-
+    projectMsj.id = "projectMsj"
     addProjectButton.addEventListener('click', () => {
       add.addProjectToProjects()
     })
@@ -313,8 +335,10 @@ const show = (() => {
     form.appendChild(label)
     form.appendChild(input)
 
+
     project.appendChild(addProjectButton)
     project.appendChild(form)
+    project.appendChild(projectMsj)
 
     return project
   }
@@ -326,7 +350,7 @@ const show = (() => {
     showTask,
     currentTaskList,
     projects,
-    // statusChange
+
   }
 })()
 

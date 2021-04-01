@@ -6,7 +6,7 @@ function loadPage () {
   projectList.addEventListener('click', e => {
     let eId = e.target.id
     show.showTask(eId)
-    
+
   })
   show.projects()
   show.showProjects(projectList)
