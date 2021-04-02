@@ -2,7 +2,7 @@
 
 ## About
 
-This project is a library where the user can add book to his/her collection and mark them as read or not read.
+This project is a To-Do list web application where users can create projects add tasks to project, delete project and tasks.
 
 ![SCREENSHOT](app_screeshot.png)
 
