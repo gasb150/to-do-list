@@ -15,9 +15,6 @@ Eslint
 - Open a terminal.
 - Clone the repo by typing that command `git clone https://github.com/gasb150/to-do-list`  
 
-## Live demo
-[clik here!](https://icebox827.github.io/library/.)
-
 ## 🔨 Technologies
 
 - HTML5
