@@ -13,7 +13,7 @@ Eslint
 ## Usage
 
 - Open a terminal.
-- Clone the repo by typing that command `git clone https://github.com/icebox827/library`  
+- Clone the repo by typing that command `git clone https://github.com/gasb150/to-do-list`  
 
 ## Live demo
 [clik here!](https://icebox827.github.io/library/.)
@@ -45,7 +45,7 @@ Eslint
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/icebox827/library/issues/2).
+Feel free to check the [issues page](https://github.com/gasb150/to-do-list/issues).
 
 ## Show your support
 
