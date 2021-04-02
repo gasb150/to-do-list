@@ -19,6 +19,7 @@ Eslint
 
 - Open a terminal.
 - Clone the repo by typing that command `git clone https://github.com/gasb150/to-do-list`  
+- Run `npm run build` in your terminal
 
 ## 🔨 Technologies
 
