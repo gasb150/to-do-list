@@ -6,8 +6,8 @@ This project is a To-Do list web application where users can create projects add
 
 ![SCREENSHOT](app_screeshot.png)
 
-
 ## 🔨 Tested with
+
 Eslint
 
 ## Usage
