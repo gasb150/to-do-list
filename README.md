@@ -4,7 +4,7 @@
 
 This project is a To-Do list web application where users can create projects add tasks to project, delete project and tasks.
 
-![SCREENSHOT](app_screeshot.png)
+![SCREENSHOT](app_screenshot.png)
 
 ## Live demo
 
