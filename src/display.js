@@ -2,7 +2,10 @@
 
 import add from './add';
 import Storage from './storage';
-import Project, { project1 } from './project';
+ //import Project, { project1 } from './project';
+ let Project = require ('./project')
+ const project1 = require ('./util')
+console.log()
 import Validation from './validation';
 
 const show = (() => {
@@ -10,7 +13,8 @@ const show = (() => {
     const myProject = JSON.parse(localStorage.getItem('myProject'));
 
     if (myProject === null) {
-      Storage.storageMyProjects([project1]);
+      console.log(Project)
+       Storage.storageMyProjects([project1()]);
     }
 
     for (let i = 0; i < myProject.length; i += 1) {
