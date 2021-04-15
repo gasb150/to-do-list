@@ -1,4 +1,5 @@
-export default class Project {
+class Project {
+
   constructor(name) {
     this._name = name;
     this._task = [];
@@ -19,4 +20,7 @@ export default class Project {
   set task(task) {
     this._task = task;
   }
-}
+
+};
+
+module.exports = Project
