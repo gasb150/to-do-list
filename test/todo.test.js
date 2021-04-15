@@ -3,7 +3,7 @@ const ToDO = require('../src/todo');
 describe('ToDO class', () => {
   let todo;
   beforeEach(() => {
-    todo = new Project('data');
+    todo = new ToDO('data');
   });
 
   it('should create a task', () => {
