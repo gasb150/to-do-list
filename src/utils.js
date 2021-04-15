@@ -9,4 +9,4 @@ export const project1 = (() => {
   projectdef.task = [todo1, todo2];
 
   return projectdef;
-})()
+})();
