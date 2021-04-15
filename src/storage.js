@@ -1,5 +1,3 @@
-import Project, { project1 } from './project';
-
 const Storage = (() => {
   function storageMyProjects(myProject) {
     localStorage.setItem('myProject', JSON.stringify(myProject));
@@ -20,4 +18,4 @@ const Storage = (() => {
   };
 })();
 
-export default Storage;
+module.exports = Storage;

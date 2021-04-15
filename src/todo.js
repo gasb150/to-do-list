@@ -1,4 +1,4 @@
-export default class ToDo {
+class ToDo {
   constructor(title, desc, date, priority, check) {
     this._title = title;
     this._desc = desc;
@@ -47,3 +47,5 @@ export default class ToDo {
     this._check = check;
   }
 }
+
+module.exports = ToDo;
