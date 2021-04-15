@@ -1,5 +1,4 @@
 class Project {
-
   constructor(name) {
     this._name = name;
     this._task = [];
@@ -20,7 +19,6 @@ class Project {
   set task(task) {
     this._task = task;
   }
+}
 
-};
-
-module.exports = Project
+module.exports = Project;

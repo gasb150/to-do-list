@@ -48,4 +48,4 @@ class ToDo {
   }
 }
 
-module.exports = ToDo
+module.exports = ToDo;

@@ -1,20 +1,19 @@
 /* eslint-disable import/no-cycle */
+/* eslint-disable import/prefer-default-export */
 
 import add from './add';
 import Storage from './storage';
- //import Project, { project1 } from './project';
- let Project = require ('./project')
- const project1 = require ('./util')
-console.log()
 import Validation from './validation';
+// import Project, { project1 } from './project';
+const Project = require('./project');
+const project1 = require('./util');
 
 const show = (() => {
   function showProjects(content) {
     const myProject = JSON.parse(localStorage.getItem('myProject'));
 
     if (myProject === null) {
-      console.log(Project)
-       Storage.storageMyProjects([project1()]);
+      Storage.storageMyProjects([project1()]);
     }
 
     for (let i = 0; i < myProject.length; i += 1) {
