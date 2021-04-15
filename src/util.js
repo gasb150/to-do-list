@@ -11,4 +11,4 @@ const ToDo = require('./todo')
     return projectdef;
   }
 
-  module.exports = project1
+module.exports = project1

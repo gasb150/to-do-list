@@ -1,5 +1,3 @@
-const ToDo = require('./todo')
-
 class Project {
 
   constructor(name) {
